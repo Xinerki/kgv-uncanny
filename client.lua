@@ -5,6 +5,11 @@ CreateThread(function()
 		local ratio = GetAspectRatio()
 		
 		local pool = GetGamePool("CPed")
+		table.sort(pool, 
+			function(a, b) 
+				return #(GetEntityCoords(a) - GetFinalRenderedCamCoord()) > #(GetEntityCoords(b) - GetFinalRenderedCamCoord())
+			end
+		)
 		
 		for i,v in pairs(pool) do
 			local boneId = 31086
