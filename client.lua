@@ -1,4 +1,3 @@
-
 CreateThread(function()
 	RequestStreamedTextureDict("uhhh")
 	
@@ -13,7 +12,9 @@ CreateThread(function()
 			local dist = #(GetFinalRenderedCamCoord() - pos)
 			local scale = (1.0/dist) * (1.0/GetFinalRenderedCamFov()) * 12.0
 			
-			if dist < 50.0 then
+			local los = HasEntityClearLosToEntity(PlayerPedId(), v, 17) or v == PlayerPedId()
+			
+			if dist < 50.0 and los then
 				SetDrawOrigin(pos)
 				DrawSprite("uhhh", IsPedAPlayer(v) and "canny" or "uncanny", 0.0, 0.0, scale, scale * ratio, 0.0, 255, 255, 255, 255)
 				ClearDrawOrigin()
