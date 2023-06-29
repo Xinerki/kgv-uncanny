@@ -12,10 +12,10 @@ CreateThread(function()
 			local pos = GetWorldPositionOfEntityBone(v, GetPedBoneIndex(v, boneId))
 			local dist = #(GetFinalRenderedCamCoord() - pos)
 			local scale = (1.0/dist) * (1.0/GetFinalRenderedCamFov()) * 12.0
-			
+			local visible = IsEntityVisible(v)
 			local los = HasEntityClearLosToEntity(PlayerPedId(), v, 17) or v == PlayerPedId()
 			
-			if dist < 50.0 and los then
+			if dist < 50.0 and los and visible then
 				SetDrawOrigin(pos)
 				DrawSprite("uhhh", IsPedAPlayer(v) and "canny" or "uncanny", 0.0, 0.0, scale, scale * ratio, 0.0, 255, 255, 255, 255)
 				ClearDrawOrigin()
