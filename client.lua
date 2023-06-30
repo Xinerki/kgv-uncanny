@@ -13,10 +13,10 @@ CreateThread(function()
 		local camCoord = GetFinalRenderedCamCoord()
 
 		table.sort(pool, function(a, b) return #(GetEntityCoords(a) - camCoord) > #(GetEntityCoords(b) - camCoord) end)
+
+		playerPed = PlayerPedId()
 		
 		for i,v in pairs(pool) do
-			playerPed = PlayerPedId()
-
 			local pos = GetWorldPositionOfEntityBone(v, GetPedBoneIndex(v, boneId))
 			local dist = #(camCoord - pos)
 			local visible = IsEntityVisible(v)
