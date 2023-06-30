@@ -1,20 +1,18 @@
 CreateThread(function()
-	local playerPed = PlayerPedId()
 	local boneId = 31086
 
 	RequestStreamedTextureDict("uhhh")
 
-	while not HasStreamedTextureDictLoaded("uhh")
+	while not HasStreamedTextureDictLoaded("uhh") do
 		Wait(0)
 	end
 	
 	while true do
+		local playerPed = PlayerPedId()
 		local pool = GetGamePool("CPed")
 		local camCoord = GetFinalRenderedCamCoord()
 
 		table.sort(pool, function(a, b) return #(GetEntityCoords(a) - camCoord) > #(GetEntityCoords(b) - camCoord) end)
-
-		playerPed = PlayerPedId()
 		
 		for i,v in pairs(pool) do
 			local pos = GetWorldPositionOfEntityBone(v, GetPedBoneIndex(v, boneId))
