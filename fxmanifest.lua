@@ -4,6 +4,7 @@ author 'xinerki'
 name 'uncanny'
 description 'those god damn cats'
 
+file 'canny.txt'
 file 'uncanny.txt'
 client_script 'client.lua'
 server_script 'server.lua'
