@@ -1,0 +1,1 @@
+print(LoadResourceFile(GetCurrentResourceName(), 'uncanny.txt'))
